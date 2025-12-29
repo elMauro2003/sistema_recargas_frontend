@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@plugin './hero.ts';
+/* Note: You may need to change the path to fit your project structure */
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+
+
+@theme {
+    --color-primary-50: #f0f9ff;
+    --color-primary-100: #e0f2fe;
+    --color-primary-500: #0ea5e9;
+    --color-primary-600: #0284c7;
+    --color-primary-700: #0369a1;
+    
+    --color-secondary-500: #8b5cf6;
+    
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-display: 'Poppins', sans-serif;
+    
+    --animate-gradient: gradient 8s linear infinite;
+    --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-float: float 3s ease-in-out infinite;
+  }
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+
+  :root {
+    color-scheme: dark;
+  }
+  
+  body {
+    background-color: rgb(17 24 39); /* gray-900 */
+    color: rgb(243 244 246); /* gray-100 */
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* 6. Clases personalizadas */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(to right, #22d3ee, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+
+  /* Esto es para el Carousel */
+
+  /* Ocultar scrollbar pero mantener funcionalidad */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Animaciones personalizadas para slider */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out;
+}
+
+/* Efecto de brillo en hover de botones */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-glow:hover::after {
+  opacity: 1;
+}
+  
+/* Hover de Plans */
+
+/* Estilos mejorados para el slider */
+.slider-container {
+  position: relative;
+  overflow: visible !important; /* Importante para que no corte el hover */
+}
+
+/* Contenedor de tarjetas con espacio para hover */
+.cards-grid {
+  display: grid;
+  gap: 2rem;
+  padding: 1rem; /* Espacio para hover */
+}
+
+/* Tarjeta individual con transformación controlada */
+.plan-card-wrapper {
+  position: relative;
+  transition: all 0.3s ease;
+  /* Espacio para la expansión del hover */
+  padding: 8px;
+  margin: -8px; /* Compensa el padding */
+}
+
+/* Cuando la tarjeta está en hover */
+.plan-card-wrapper:hover {
+  z-index: 10; /* Asegura que esté por encima */
+  transform: translateY(-4px);
+}
+
+/* Reducir la escala del hover para que no se salga */
+.scale-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scale-hover:hover {
+  transform: scale(1.03); /* Reducido de 1.05 a 1.03 */
+}
+
+/* Sombra más sutil en hover */
+.hover-shadow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* Asegurar que todo el contenido sea visible */
+.overflow-visible {
+  overflow: visible !important;
+}
