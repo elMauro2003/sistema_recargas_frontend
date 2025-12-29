@@ -20,7 +20,7 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
     } else if (telefono.length > 0) {
       setIsValid(false);
       if (numeroLimpio.length > 10) {
-        setError("El número debe tener máximo 10 dígitos");
+        setError("El número debe tener máximo 8 dígitos");
       } else if (numeroLimpio.length < 10 && numeroLimpio.length > 0) {
         setError(`Faltan ${10 - numeroLimpio.length} dígitos`);
       } else {
@@ -36,7 +36,7 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
     const numeroLimpio = telefono.replace(/\D/g, '');
     
     if (!isValid) {
-      setError("Por favor, ingresa un número de teléfono válido (10 dígitos)");
+      setError("Por favor, ingresa un número de teléfono válido (8 dígitos)");
       return;
     }
 
@@ -48,7 +48,7 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
       const mensaje = encodeURIComponent(
         `${WHATSAPP_CONFIG.mensajeBase}` +
         `📱 *${plan.titulo}*\n` +
-        `💵 Precio: ${plan.precio} MXN\n` +
+        `💵 Precio: ${plan.precio} CU\n` +
         `📞 Número a recargar: ${numeroLimpio}\n` +
         `---\n` +
         `Por favor, procesa mi recarga.`
@@ -119,7 +119,7 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
                       <span className="block text-lg font-bold text-cyan-300 mt-1">{plan.titulo}</span>
                     </p>
                     <p className="text-sm text-gray-400 mt-2">
-                      Precio: <span className="font-bold text-white">{plan.precio} MXN</span>
+                      Precio: <span className="font-bold text-white">{plan.precio} CU</span>
                     </p>
                   </div>
 
@@ -132,14 +132,14 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
                   {/* Input sin autofocus */}
                   <Input
                     label="Número de Teléfono"
-                    placeholder="Ej: 55 1234 5678"
+                    placeholder="Ej: 58215321"
                     value={telefono}
                     onValueChange={setTelefono}
                     startContent={<Phone className="text-gray-400" size={20} />}
                     className="mb-3"
                     variant="bordered"
                     color={error ? "danger" : isValid ? "success" : "primary"}
-                    description="Ingresa los 10 dígitos sin espacios ni guiones"
+                    description="Ingresa los 8 dígitos sin espacios ni guiones"
                     isInvalid={!!error}
                     errorMessage={error}
                     endContent={
@@ -147,19 +147,18 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
                         <CheckCircle2 className="text-green-500" size={20} />
                       ) : null
                     }
-                    // SIN autofocus aquí
                   />
 
                   {/* Indicador visual de validación */}
                   <div className="flex items-center gap-2 mb-4">
                     <div className={`w-3 h-3 rounded-full ${isValid ? 'bg-green-500' : 'bg-gray-600'}`}></div>
                     <span className={`text-sm ${isValid ? 'text-green-400' : 'text-gray-400'}`}>
-                      {isValid ? '✓ Número válido' : 'Esperando número de 10 dígitos'}
+                      {isValid ? '✓ Número válido' : 'Esperando número de 8 dígitos'}
                     </span>
                   </div>
 
                   {/* Ejemplos de formato */}
-                  <div className="text-xs text-gray-500 bg-gray-800/50 p-3 rounded-lg">
+                  {/* <div className="text-xs text-gray-500 bg-gray-800/50 p-3 rounded-lg">
                     <p className="font-semibold mb-1">Formato correcto:</p>
                     <div className="grid grid-cols-2 gap-2">
                       <span className="text-green-400">5512345678</span>
@@ -167,7 +166,7 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
                       <span className="text-amber-400">55-1234-5678</span>
                       <span className="text-amber-400">55 1234 5678</span>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               )}
             </ModalBody>

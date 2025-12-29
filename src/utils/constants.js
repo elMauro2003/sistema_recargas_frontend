@@ -59,6 +59,6 @@ export const PLANES_EJEMPLO = [
   
   // Configuración de WhatsApp
   export const WHATSAPP_CONFIG = {
-    numero: "521234567890", // REEMPLAZA con tu número real
+    numero: "58521602",
     mensajeBase: "¡Hola! Quiero recargar el plan:\n"
   };

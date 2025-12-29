@@ -39,7 +39,7 @@ export default function PlanCard({ plan }) {
           <div className="mb-3 sm:mb-4">
             <div className="flex items-baseline">
               <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">{plan.precio}</span>
-              <span className="text-gray-400 ml-1 sm:ml-2 text-sm sm:text-base">MXN</span>
+              <span className="text-gray-400 ml-1 sm:ml-2 text-sm sm:text-base">CU</span>
             </div>
             <p className="text-xs sm:text-sm text-gray-400">IVA incluido</p>
           </div>
