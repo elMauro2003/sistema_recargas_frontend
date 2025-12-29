@@ -14,15 +14,15 @@ export default function RecargaModal({ isOpen, onClose, plan }) {
   useEffect(() => {
     const numeroLimpio = telefono.replace(/\D/g, '');
     
-    if (numeroLimpio.length === 10) {
+    if (numeroLimpio.length === 8) {
       setIsValid(true);
       setError("");
     } else if (telefono.length > 0) {
       setIsValid(false);
-      if (numeroLimpio.length > 10) {
+      if (numeroLimpio.length > 8) {
         setError("El número debe tener máximo 8 dígitos");
-      } else if (numeroLimpio.length < 10 && numeroLimpio.length > 0) {
-        setError(`Faltan ${10 - numeroLimpio.length} dígitos`);
+      } else if (numeroLimpio.length < 8 && numeroLimpio.length > 0) {
+        setError(`Faltan ${8 - numeroLimpio.length} dígitos`);
       } else {
         setError("");
       }
